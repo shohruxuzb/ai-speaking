@@ -1,0 +1,20 @@
+@"
+# venv
+.venv*
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+"@ | Out-File -Encoding utf8 .gitignore
