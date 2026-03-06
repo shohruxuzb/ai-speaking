@@ -1,16 +1,17 @@
-uvicorn~=0.35.0
-fastapi~=0.116.1
-python-dotenv~=1.1.1
-groq~=0.31.0
-requests
+# API
+fastapi
+uvicorn
+python-dotenv
+pydantic
+
+# Groq (LLM + Whisper + TTS)
+groq
+
+# Emotion tracking (no TensorFlow)
+hsemotion-onnx --no-deps
+onnxruntime
+opencv-python-headless
+
+# Utilities
+numpy
 python-multipart
-uvicorn~=0.35.0
-fastapi~=0.116.1
-python-dotenv~=1.1.1
-groq~=0.31.0
-requests
-python-multipart
-fer~=22.5.1
-opencv-python-headless~=4.11.0.86
-numpy~=2.2.6
-tensorflow~=2.19.0
