@@ -4,7 +4,7 @@ import numpy as np
 import time
 import threading
 from fer import FER
-from fast api import APIRouter, BackgroundTasks, Depends
+from fastapi import APIRouter, BackgroundTasks, Depends
 from fastapi.responses import JSONResponse
 from core.auth import get_current_user
 
@@ -36,10 +36,10 @@ class EmotionTracker:
                 time.sleep(1)
                 continue
             try:
-                result = self.detector.detect(frame)
+                result = self.detector.detect_emotions(frame)
                 if result:
                     emotions = result[0]['emotions']
-                    dominant = max(motions, key=emotions.get)
+                    dominant = max(emotions, key=emotions.get)
                     self.timeline.append({
                         "second": self.second,
                         "emotions": dominant,
@@ -68,7 +68,7 @@ class EmotionTracker:
 
         emotion_counts = {}
         for entry in timeline:
-            em = entry['emotion']
+            em = entry['emotions']
             emotion_counts[em] = emotion_counts.get(em, 0) + 1
 
         dominant = max(emotion_counts, key=emotion_counts.get) if emotion_counts else 'neutral'
