@@ -15,11 +15,15 @@ from dotenv import load_dotenv
 from groq import Groq
 from typing import List, Dict
 
-from api.routes_emotion import router as emotion_router
-app.include_router(emotion_router)
-
 # Init app
 app = FastAPI()
+
+try:
+    from emotion_service import router as emotion_router
+    app.include_router(emotion_router)
+except ImportError:
+    print("Warning: emotion_service.py not found or has errors.")
+
 
 @app.get("/")
 async def root():
