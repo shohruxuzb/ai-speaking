@@ -1,22 +1,22 @@
 # Web framework
-fastapi~=0.116.1
-uvicorn~=0.35.0
+fastapi==0.116.1
+uvicorn==0.35.0
 python-multipart
 
 # Environment
-python-dotenv~=1.1.1
+python-dotenv==1.1.1
 
 # AI / LLM
-groq~=0.31.0
-elevenlabs~=1.50.0
+groq==0.31.0
+elevenlabs==1.50.0
 
 # Emotion detection
 hsemotion_onnx
-opencv-python-headless~=4.11.0.86
-numpy~=1.26.4
+opencv-python-headless==4.11.0.86
+numpy==1.26.4
 
 # HTTP
 requests
 
 # Utilities
-schedule~=1.2.2
+schedule==1.2.2
