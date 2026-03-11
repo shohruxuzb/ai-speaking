@@ -316,16 +316,23 @@ class EmotionTracker:
         return sanitize(result)
 
 
-tracker = EmotionTracker()
+# Lazy init — do NOT instantiate at import time (causes model download on server startup)
+tracker = None
 
 
 @router.post("/emotion/start")
 async def start_emotion_tracking():
+    global tracker
+    if tracker is None:
+        tracker = EmotionTracker()
     tracker.start_tracking()
     return {"status": "tracking started"}
 
 
 @router.post("/emotion/stop")
 async def stop_emotion_tracking(question: str = "", part: int = 1):
+    global tracker
+    if tracker is None:
+        return JSONResponse(content={"error": "tracking not started"})
     result = tracker.stop_tracking(question=question, part=part)
     return JSONResponse(content=result)
